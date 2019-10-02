@@ -1,0 +1,31 @@
+name: Node CI
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-16.04
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup NodeJS 10.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: '10.x'
+    - name: Install Ubuntu packages
+      run: |
+        sudo -E apt-add-repository -y "ppa:ubuntu-toolchain-r/test"
+        sudo apt-get update -y
+        sudo -E apt-get -yq --no-install-suggests --no-install-recommends install libcairo2-dev libjpeg8-dev libpango1.0-dev libgif-dev g++-4.9
+    - name: Setup Node tools
+      run: npm explore npm -g -- npm install node-gyp@latest
+    - name: Run npm install
+      run: npm install
+    - name: Run test
+      run: npm test
+    - name: Run demo:build
+      run: npm run demo:build
