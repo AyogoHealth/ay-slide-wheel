@@ -44,18 +44,19 @@
     "webpack-cli": "^3.3.9"
   },
   "scripts": {
-    "demo:js": "tslint -p . && webpack --watch",
-    "demo:js:build": "tslint -p . && webpack",
+    "demo:js": "npm run lint && webpack --watch",
+    "demo:js:build": "npm run lint && webpack",
     "demo:css:build": "lessc --autoprefix --source-map-map-inline --source-map-less-inline --source-map-rootpath=demo demo/style.less demo/generated/style.css",
     "demo:css": "onchange 'less/**/*.less' 'demo/*.less' -- npm run demo:css:build",
     "demo:serve": "http-server demo",
     "demo:build": "npm run demo:css:build && npm run demo:js:build",
     "demo": "npm run demo:css:build && npm run demo:js & npm run demo:css & npm run demo:serve & wait",
-    "dist": "tslint -p . && rm -rf dist/* && tsc -p tsconfig.dist.json",
+    "dist": "npm run lint && rm -rf dist/* && tsc -p tsconfig.dist.json",
+    "lint": "eslint --ext .ts,.js .",
     "preversion": "npm test",
     "postversion": "git push && git push --follow-tags",
     "start": "npm run demo",
-    "test": "tslint -p . && jest",
+    "test": "npm run lint && jest",
     "version": "npm run dist"
   }
 }
