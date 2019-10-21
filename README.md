@@ -4,6 +4,10 @@
 
 This is an AngularJS 1.x directive which renders a slide wheel in canvas.
 
+## Demo
+
+You can view a demo of the slide wheel at <https://ayogohealth.github.io/ay-slide-wheel/>
+
 ## Installation
 
 ```bash
