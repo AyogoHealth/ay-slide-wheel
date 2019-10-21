@@ -1,0 +1,7 @@
+node_modules/
+web-component/
+angular/
+slide-wheel/
+demo/generated/
+webpack.config.js
+jest.config.js

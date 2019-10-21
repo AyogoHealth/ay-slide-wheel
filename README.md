@@ -42,4 +42,4 @@ Please note that this project is released with a [Contributor Code of Conduct](h
 
 Released under the MIT Licence.
 
-Copyright © 2018 Ayogo Health Inc.
+Copyright © 2019 Ayogo Health Inc.
