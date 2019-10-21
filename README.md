@@ -1,6 +1,6 @@
 # Slide Wheel Component
 
-[![Build Status](https://travis-ci.com/AyogoHealth/ay-slide-wheel.svg?branch=master)](https://travis-ci.org/AyogoHealth/ay-slide-wheel)
+[![Build Status](https://github.com/AyogoHealth/ay-slide-wheel/workflows/CI/badge.svg)](https://github.com/AyogoHealth/ay-slide-wheel/actions)
 
 This is an AngularJS 1.x directive which renders a slide wheel in canvas.
 
