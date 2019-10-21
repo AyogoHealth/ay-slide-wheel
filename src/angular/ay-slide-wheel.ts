@@ -27,48 +27,48 @@ export class AySlideWheel {
 
 
 angular.module(modName, [])
-.directive(modName, ['$injector', function($injector: auto.IInjectorService) {
-  return {
-    restrict: 'E',
-    template: template,
-    controller: AySlideWheel,
-    controllerAs: '$ctrl',
-    bindToController: true,
-    scope: {
-      value: '=?',
-      enabled: '@?',
-      onChange: '&?',
-      min: '<?',
-      max: '<?',
-      roundedLine: '<?',
-      lineThickness: '<?',
-      lineStartColour: '@?',
-      lineMidColour: '@?',
-      lineEndColour: '@?'
-    },
-    link: function($scope:IScope, $element:IAugmentedJQuery, $attrs:IAttributes, $ctrl:AySlideWheel) {
-      new SlideWheel(
-        $element[0],
-        (val: number) => {
-          $scope.$evalAsync(() => {
-            $ctrl.value = val;
-          });
-          if ($ctrl.onChange) {
-            $ctrl.onChange({ value: val });
-          }
-        },
-        $ctrl.value,
-        $ctrl.enabled,
-        $ctrl.min,
-        $ctrl.max,
-        $ctrl.roundedLine,
-        $ctrl.lineThickness,
-        $ctrl.lineStartColour,
-        $ctrl.lineMidColour,
-        $ctrl.lineEndColour
-      );
-    }
-  };
-}]);
+  .directive(modName, ['$injector', function($injector: auto.IInjectorService) {
+    return {
+      restrict: 'E',
+      template: template,
+      controller: AySlideWheel,
+      controllerAs: '$ctrl',
+      bindToController: true,
+      scope: {
+        value: '=?',
+        enabled: '@?',
+        onChange: '&?',
+        min: '<?',
+        max: '<?',
+        roundedLine: '<?',
+        lineThickness: '<?',
+        lineStartColour: '@?',
+        lineMidColour: '@?',
+        lineEndColour: '@?'
+      },
+      link: function($scope:IScope, $element:IAugmentedJQuery, $attrs:IAttributes, $ctrl:AySlideWheel) {
+        new SlideWheel(
+          $element[0],
+          (val: number) => {
+            $scope.$evalAsync(() => {
+              $ctrl.value = val;
+            });
+            if ($ctrl.onChange) {
+              $ctrl.onChange({ value: val });
+            }
+          },
+          $ctrl.value,
+          $ctrl.enabled,
+          $ctrl.min,
+          $ctrl.max,
+          $ctrl.roundedLine,
+          $ctrl.lineThickness,
+          $ctrl.lineStartColour,
+          $ctrl.lineMidColour,
+          $ctrl.lineEndColour
+        );
+      }
+    };
+  }]);
 
 export default modName;

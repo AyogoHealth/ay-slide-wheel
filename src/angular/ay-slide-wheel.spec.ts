@@ -2,7 +2,7 @@ import * as angular from 'angular';
 import 'angular-mocks';
 
 import { mock, auto, IScope, IAugmentedJQuery,
-         IRootScopeService, ICompileService} from 'angular';
+  IRootScopeService, ICompileService} from 'angular';
 import aySlideWheel from './ay-slide-wheel';
 import { AySlideWheel } from './ay-slide-wheel';
 
@@ -20,11 +20,11 @@ describe('AySlideWheel', () => {
   }));
 
   beforeEach(function() {
-    let $rootScope = $injector.get<IRootScopeService>('$rootScope');
+    const $rootScope = $injector.get<IRootScopeService>('$rootScope');
     $scope = <any>$rootScope.$new();
 
-    let $compile = $injector.get<ICompileService>('$compile');
-    let el = angular.element('<ay-slide-wheel></ay-slide-wheel>');
+    const $compile = $injector.get<ICompileService>('$compile');
+    const el = angular.element('<ay-slide-wheel></ay-slide-wheel>');
     element = $compile(el)($scope);
 
     angular.element(document.body).append(element);
