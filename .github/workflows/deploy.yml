@@ -1,0 +1,26 @@
+name: deploy
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: Use NodeJS
+      uses: actions/setup-node@v1
+
+    - name: npm ci
+        run: npm ci
+
+    - name: Build and Deploy
+      uses: JamesIves/github-pages-deploy-action@master
+      env:
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        BRANCH: gh-pages
+        FOLDER: demo
+        BUILD_SCRIPT: npm run demo:build
