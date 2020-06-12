@@ -1,3 +1,5 @@
+/*! Copyright 2019 Ayogo Health Inc. */
+
 module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
@@ -9,6 +11,7 @@ module.exports = {
     "es6": true
   },
   plugins: [
+    "header",
     "@typescript-eslint"
   ],
   rules: {
@@ -31,9 +34,46 @@ module.exports = {
     "radix": "error",
     "semi": ["error", "always"],
 
-    "@typescript-eslint/class-name-casing": "warn",
+    "header/header": [2, "block", { "pattern": "! Copyright \\d{4} Ayogo Health Inc." }],
+
+    "@typescript-eslint/naming-convention": ["warn", { selector: 'class', format: ['PascalCase'] }],
     "@typescript-eslint/indent": ["error", 2],
     "@typescript-eslint/no-namespace": "error",
     "@typescript-eslint/no-this-alias": "warn"
-  }
+  },
+  overrides: [
+    {
+      "files": ["**/*.js"],
+      "parser": 'espree',
+      "env": {
+        "node": true
+      },
+      "parserOptions": {},
+      "plugins": ["header"],
+      "rules": {
+        'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+        'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+        "brace-style": ["error", "1tbs"],
+        "curly": "error",
+        "eol-last": ["error", "always"],
+        "eqeqeq": "error",
+        "guard-for-in": "error",
+        "keyword-spacing": ["error", { "before": true, "after": true, "overrides": { "catch": { "after": false } } }],
+        "linebreak-style": ["error", "unix"],
+        "no-unused-labels": "error",
+        "no-caller": "error",
+        "no-new-wrappers": "error",
+        "no-redeclare": "error",
+        "no-eval": "error",
+        "no-trailing-spaces": "error",
+        "no-undef": "error",
+        "prefer-const": "warn",
+        "radix": "error",
+        "semi": ["error", "always"],
+        "indent": ["error", 2],
+
+        "header/header": [2, "block", { "pattern": "! Copyright \\d{4} Ayogo Health Inc." }]
+      }
+    }
+  ]
 };

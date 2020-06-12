@@ -1,3 +1,5 @@
+/*! Copyright 2020 Ayogo Health Inc. */
+
 import * as angular from 'angular';
 import aySlideWheel from '../src/angular/ay-slide-wheel';
 
