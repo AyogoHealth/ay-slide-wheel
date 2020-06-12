@@ -1,3 +1,5 @@
+/*! Copyright 2020 Ayogo Health Inc. */
+
 import '../src/web-component';
 
 document.addEventListener('DOMContentLoaded', () => {
