@@ -36,10 +36,10 @@ module.exports = {
 
     "header/header": [2, "block", { "pattern": "! Copyright \\d{4} Ayogo Health Inc." }],
 
-    "@typescript-eslint/naming-convention": ["warn", { selector: 'class', format: ['PascalCase'] }],
-    "@typescript-eslint/indent": ["error", 2],
-    "@typescript-eslint/no-namespace": "error",
-    "@typescript-eslint/no-this-alias": "warn"
+    "@typescript-eslint/naming-convention": "off",
+    "@typescript-eslint/indent": "off",
+    "@typescript-eslint/no-namespace": "off",
+    "@typescript-eslint/no-redeclare": "off"
   },
   overrides: [
     {
