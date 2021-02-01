@@ -25,4 +25,4 @@ jobs:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         BRANCH: gh-pages
         FOLDER: demo
-        BUILD_SCRIPT: npm run demo:build
+        BUILD_SCRIPT: npm run build:demo

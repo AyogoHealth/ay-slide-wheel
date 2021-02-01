@@ -36,10 +36,10 @@ module.exports = {
 
     "header/header": [2, "block", { "pattern": "! Copyright \\d{4} Ayogo Health Inc." }],
 
-    "@typescript-eslint/naming-convention": "off",
-    "@typescript-eslint/indent": "off",
-    "@typescript-eslint/no-namespace": "off",
-    "@typescript-eslint/no-redeclare": "off"
+    "@typescript-eslint/naming-convention": ["warn", { selector: 'class', format: ['PascalCase'] }],
+    "@typescript-eslint/indent": ["error", 2],
+    "@typescript-eslint/no-namespace": "error",
+    "@typescript-eslint/no-this-alias": "warn"
   },
   overrides: [
     {
@@ -72,7 +72,12 @@ module.exports = {
         "semi": ["error", "always"],
         "indent": ["error", 2],
 
-        "header/header": [2, "block", { "pattern": "! Copyright \\d{4} Ayogo Health Inc." }]
+        "header/header": [2, "block", { "pattern": "! Copyright \\d{4} Ayogo Health Inc." }],
+
+        "@typescript-eslint/naming-convention": "off",
+        "@typescript-eslint/indent": "off",
+        "@typescript-eslint/no-namespace": "off",
+        "@typescript-eslint/no-redeclare": "off"
       }
     }
   ]

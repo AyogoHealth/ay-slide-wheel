@@ -1,15 +1,14 @@
 /*! Copyright 2021 Ayogo Health Inc. */
 
 const path = require('path');
+
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
 const ModuleConcatenationPlugin = require('webpack/lib/optimize/ModuleConcatenationPlugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-
-const CSSGeorge = require('less-plugin-css-george');
 
 const baseconfig = {
   resolve: {
-    extensions: ['.ts', '.mjs', '.js', '.json']
+    extensions: ['.ts', '.mjs', '.js', '.json', 'html']
   },
   output: {
     path: __dirname + '/demo/generated',
@@ -31,10 +30,7 @@ const baseconfig = {
             lessOptions: {
               sourceMap: {
                 sourceMapRootpath: path.resolve(__dirname, 'demo')
-              },
-              plugins: [
-                new CSSGeorge({fallback: true})
-              ]
+              }
             }
           }
         }
