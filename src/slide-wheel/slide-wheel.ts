@@ -41,7 +41,7 @@ export function SlideWheel(element: HTMLElement, onChange, value: number, enable
   var scale = 1;  //HDPI/retina scaling removed for now because canvas scale now matches assets and scaling is moved to CSS
 
   const knob = new Image();
-  const knobLoaded = new Promise((res, rej) => {
+  const knobLoaded = new Promise<void>((res, rej) => {
     knob.src = 'assets/img/slide-wheel/knob.png';
 
     knob.onload = () => res();
@@ -49,7 +49,7 @@ export function SlideWheel(element: HTMLElement, onChange, value: number, enable
   });
 
   var bgImg = new Image();
-  const bgLoaded = new Promise((res, rej) => {
+  const bgLoaded = new Promise<void>((res, rej) => {
     bgImg.src = 'assets/img/slide-wheel/slide-rail.png';
 
     bgImg.onload = () => res();
