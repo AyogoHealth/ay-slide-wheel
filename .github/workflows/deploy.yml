@@ -16,13 +16,13 @@ jobs:
       with:
           node-version: '12.x'
 
-    - name: npm ci
-      run: npm ci
+    - name: Install & Build
+      run: |
+        npm ci
+        npm run build:demo
 
     - name: Build and Deploy
-      uses: JamesIves/github-pages-deploy-action@master
-      env:
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        BRANCH: gh-pages
-        FOLDER: demo
-        BUILD_SCRIPT: npm run build:demo
+      uses: JamesIves/github-pages-deploy-action@4.1.2
+      with:
+        branch: gh-pages
+        folder: demo
