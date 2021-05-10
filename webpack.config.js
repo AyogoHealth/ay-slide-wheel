@@ -12,10 +12,12 @@ const baseconfig = {
   },
   output: {
     path: __dirname + '/demo/generated',
+    publicPath: 'generated/',
+    chunkFilename: '[name].bundle.js',
     devtoolModuleFilenameTemplate: "[absolute-resource-path]"
   },
+  devtool: 'source-map',
   mode: 'development',
-  devtool: 'inline-source-map',
   module: {
     rules: [
       { test: /\.mjs$/, include: /node_modules/, type: 'javascript/auto' },
@@ -23,7 +25,7 @@ const baseconfig = {
       { test: /\.m?js?$/, loader: 'source-map-loader', include: /node_modules/ },
       { test: /\.less$/, use: [
         MiniCssExtractPlugin.loader,
-        'css-loader',
+        { loader: 'css-loader', options: { url: false } },
         {
           loader: 'less-loader',
           options: {
@@ -51,6 +53,10 @@ module.exports = [
       angular: './demo/app-angular.ts',
       web: './demo/app-web.ts',
       style: './demo/style.less'
+    },
+    devServer: {
+      contentBase: path.resolve(__dirname, 'demo'),
+      publicPath: '/generated/'
     },
     target: 'web'
   }, baseconfig)
