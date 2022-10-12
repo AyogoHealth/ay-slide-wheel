@@ -8,7 +8,7 @@
 /***/ (() => {
 
 /**
- * @license AngularJS v1.8.2
+ * @license AngularJS v1.8.3
  * (c) 2010-2020 Google LLC. http://angularjs.org
  * License: MIT
  */
@@ -108,7 +108,7 @@ function isValidObjectMaxDepth(maxDepth) {
 function minErr(module, ErrorConstructor) {
   ErrorConstructor = ErrorConstructor || Error;
 
-  var url = 'https://errors.angularjs.org/1.8.2/';
+  var url = 'https://errors.angularjs.org/1.8.3/';
   var regex = url.replace('.', '\\.') + '[\\s\\S]*';
   var errRegExp = new RegExp(regex, 'g');
 
@@ -2837,11 +2837,11 @@ function toDebugString(obj, maxDepth) {
 var version = {
   // These placeholder strings will be replaced by grunt's `build` task.
   // They need to be double- or single-quoted.
-  full: '1.8.2',
+  full: '1.8.3',
   major: 1,
   minor: 8,
-  dot: 2,
-  codeName: 'meteoric-mining'
+  dot: 3,
+  codeName: 'ultimate-farewell'
 };
 
 
@@ -2992,7 +2992,7 @@ function publishExternalAPI(angular) {
       });
     }
   ])
-  .info({ angularVersion: '1.8.2' });
+  .info({ angularVersion: '1.8.3' });
 }
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -17609,7 +17609,7 @@ function $ParseProvider() {
 
       var useInputs = parsedExpression.inputs && !exp.inputs;
 
-      // Propogate the literal/inputs/constant attributes
+      // Propagate the literal/inputs/constant attributes
       // ... but not oneTime since we are handling it
       oneTimeWatch.literal = parsedExpression.literal;
       oneTimeWatch.constant = parsedExpression.constant;
@@ -17696,7 +17696,7 @@ function $ParseProvider() {
       fn.$$intercepted = parsedExpression;
       fn.$$interceptor = interceptorFn;
 
-      // Propogate the literal/oneTime/constant attributes
+      // Propagate the literal/oneTime/constant attributes
       fn.literal = parsedExpression.literal;
       fn.oneTime = parsedExpression.oneTime;
       fn.constant = parsedExpression.constant;
