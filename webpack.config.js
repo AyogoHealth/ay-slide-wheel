@@ -62,8 +62,12 @@ module.exports = [
       style: './demo/style.less'
     },
     devServer: {
-      contentBase: path.resolve(__dirname, 'demo'),
-      publicPath: '/generated/'
+      static: {
+        directory: path.resolve(__dirname, 'demo'),
+      },
+      devMiddleware: {
+        publicPath: '/generated/'
+      }
     },
     target: 'web'
   }, baseconfig)
