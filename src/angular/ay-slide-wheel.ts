@@ -16,7 +16,7 @@ export class AySlideWheel {
   lineMidColour : string;
   lineEndColour : string;
   value: number;
-  onChange: ({ value: number }) => void;
+  onChange: (evt: { value: number }) => void;
 
   $onChanges(changesObj) {
     if (changesObj.enabled) {
