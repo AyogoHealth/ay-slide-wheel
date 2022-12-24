@@ -47,6 +47,7 @@ angular.module(modName, [])
         lineEndColour: '@?'
       },
       link: function($scope:IScope, $element:IAugmentedJQuery, $attrs:IAttributes, $ctrl:AySlideWheel) {
+        $ctrl.value = $ctrl.value || 0;
         new SlideWheel(
           $element[0],
           (val: number) => {
