@@ -36688,7 +36688,7 @@ function SlideWheel(element, onChange, value, enabled = true, min = 0, max = 100
     const kMin = 0;
     const kMax = 1000;
     // Value ranges from 0 to 1000
-    value = ((value - min) / (max - min)) * 1000 || 0;
+    let arcValue = ((value - min) / (max - min)) * 1000 || 0;
     element.setAttribute('tabindex', '0');
     element.setAttribute('role', 'slider');
     element.setAttribute('aria-valuemin', min.toString());
@@ -36748,21 +36748,19 @@ function SlideWheel(element, onChange, value, enabled = true, min = 0, max = 100
     function change(v) {
         const oldval = value | 0;
         const newval = ((max - min) * (v / kMax) + min) | 0;
-        value = v;
+        arcValue = v;
         if (oldval !== newval) {
             element.setAttribute('aria-valuenow', newval.toString());
-            // $scope.$evalAsync(() => {
-            //   $ctrl.value = newval;
-            // });
+            value = newval;
             if (onChange) {
                 onChange(newval);
             }
         }
     }
-    if (value < kMin) {
+    if (arcValue < kMin) {
         change(kMin);
     }
-    if (value > kMax) {
+    if (arcValue > kMax) {
         change(kMax);
     }
     function angle(v) {
@@ -36782,7 +36780,7 @@ function SlideWheel(element, onChange, value, enabled = true, min = 0, max = 100
     var drawing = false;
     function draw() {
         var c = context; // context
-        var a = arc(value); // Arc
+        var a = arc(arcValue); // Arc
         function clearCanvas() {
             // Store the current transformation matrix
             c.save();
@@ -36853,7 +36851,7 @@ function SlideWheel(element, onChange, value, enabled = true, min = 0, max = 100
         var touchMove = function (evt) {
             var adjustment = width / canvas.offsetWidth;
             var v = xy2val(evt.touches[0].pageX * adjustment, evt.touches[0].pageY * adjustment);
-            if (v === value) {
+            if (v === arcValue) {
                 return;
             }
             change(validate(v));
@@ -36875,7 +36873,7 @@ function SlideWheel(element, onChange, value, enabled = true, min = 0, max = 100
         var mouseMove = function (evt) {
             var adjustment = width / canvas.offsetWidth;
             var v = xy2val(evt.pageX * adjustment, evt.pageY * adjustment);
-            if (v === value) {
+            if (v === arcValue) {
                 return;
             }
             change(validate(v));
@@ -36937,7 +36935,7 @@ function SlideWheel(element, onChange, value, enabled = true, min = 0, max = 100
                 if (val < min) {
                     val = min;
                 }
-                val = ((val - min) / (max - min)) * 1000 - 1;
+                val = ((val - min) / (max - min)) * 1000;
                 if (val < kMin) {
                     val = kMin;
                 }
@@ -36971,10 +36969,10 @@ function SlideWheel(element, onChange, value, enabled = true, min = 0, max = 100
         // Make the knob not be able to cross the min/max boundary
         // has a side effect that you cant easily tap to change the value
         // when the dial is close to the max/min boundary
-        if ((value > kMax * 0.9 && ret <= kMax * 0.1) || (value === kMax && ret <= kMax * 0.8)) {
+        if ((arcValue > kMax * 0.9 && ret <= kMax * 0.1) || (arcValue === kMax && ret <= kMax * 0.8)) {
             ret = kMax;
         }
-        else if (value <= kMax * 0.1 && ret > kMax * 0.2) {
+        else if (arcValue <= kMax * 0.1 && ret > kMax * 0.2) {
             ret = kMin;
         }
         return ret;
@@ -37026,6 +37024,7 @@ angular.module(modName, [])
                 lineEndColour: '@?'
             },
             link: function ($scope, $element, $attrs, $ctrl) {
+                $ctrl.value = $ctrl.value || 0;
                 new SlideWheel($element[0], (val) => {
                     $scope.$evalAsync(() => {
                         $ctrl.value = val;
